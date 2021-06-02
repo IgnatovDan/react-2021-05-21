@@ -2,31 +2,29 @@ import { Fragment } from 'react';
 import { connect } from 'react-redux';
 import styles from './backet.module.css';
 import BacketItem from './backetitem';
+import { restaurants } from '../../fixtures';
 
-function getBacketItems(order, findProductInfoById) {
+function getBacketItems(order) {
   return !order
     ? []
     : Object.keys(order)
         .filter((key) => order[key] > 0)
         .map((key) => {
-          const product = findProductInfoById(key);
+          const product = restaurants.findProductInfoById(key);
 
           return {
             productId: key,
-            productName: product.name,
-            restaurantName: product.restaurantName,
             productPrice: product.price,
-            itemCost: product.price * order[key],
             productAmount: order[key],
           };
         });
 }
 
-const Backet = ({ order, findProductInfoById }) => {
+const Backet = ({ order }) => {
   // TODO: useMemo(.., [order])
   // TODO: pass via props
   // HOC?
-  const backetItems = getBacketItems(order, findProductInfoById);
+  const backetItems = getBacketItems(order);
 
   // TODO: useMemo(.., [order])
   // TODO: pass via props
@@ -46,7 +44,7 @@ const Backet = ({ order, findProductInfoById }) => {
                 (item) =>
                   item && (
                     <span key={item.productId}>
-                      <BacketItem {...item}></BacketItem>
+                      <BacketItem productId={item.productId}></BacketItem>
                     </span>
                   )
               )}
