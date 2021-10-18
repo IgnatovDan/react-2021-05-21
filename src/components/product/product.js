@@ -6,7 +6,7 @@ import { ReactComponent as Minus } from '../../icons/minus.svg';
 import { ReactComponent as Plus } from '../../icons/plus.svg';
 import { decrement, increment } from '../../redux/actions';
 
-const Product = ({ product, amount, increment, decrement, fetchData }) => {
+const Product = ({ product, amount, increment, decrement, fetchData, onnAddMenuItem }) => {
   useEffect(() => {
     fetchData && fetchData(product.id);
   }, []); // eslint-disable-line
@@ -70,7 +70,10 @@ const mapStateToProps = (state, props) => ({
 // };
 
 const mapDispatchToProps = (dispatch, props) => ({
-  increment: () => dispatch(increment(props.product.id)),
+  increment: () => {
+    props.onnAddMenuItem(props.product);
+    dispatch(increment(props.product.id))
+  },
   decrement: () => dispatch(decrement(props.product.id)),
 });
 

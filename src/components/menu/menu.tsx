@@ -11,6 +11,8 @@ class Menu extends Component {
         id: PropTypes.string.isRequired,
       }).isRequired
     ).isRequired,
+
+    onnAddMenuItem: PropTypes.func
   };
 
   state = { error: null };
@@ -20,7 +22,7 @@ class Menu extends Component {
   }
 
   render() {
-    const { menu } = this.props;
+    const { menu, onnAddMenuItem } = this.props as any;
 
     if (this.state.error) {
       return <p>Сейчас меню этого ресторана недоступно :(</p>;
@@ -30,7 +32,7 @@ class Menu extends Component {
       <div className={styles.menu}>
         <div>
           {menu.map((product) => (
-            <Product key={product.id} product={product} />
+            <Product key={product.id} product={product} onnAddMenuItem={onnAddMenuItem} />
           ))}
         </div>
       </div>
