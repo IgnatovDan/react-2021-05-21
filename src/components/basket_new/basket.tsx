@@ -8,13 +8,10 @@ const Basket = (basket: BasketProps): JSX.Element => {
         ? basket.items.map(item => <BasketItem
             title={item.title}
             item_cost={item.item_cost}
-            quantity={item.quantity}
-            onAddItem={basket.onAddItem}
-            onRemoveItem={basket.onRemoveItem}
             onRemoveWholeBasketItem={basket.onRemoveWholeBasketItem}
           />)
         : <div>No items to display</div> }
-        <div>Summary price = {basket.items.reduce((acc, item) => acc + item.item_cost * item.quantity, 0)}$ </div>
+        <div>Summary price = {basket.items.reduce((acc, item) => acc + item.item_cost, 0)}$ </div>
     </>
   );
 }

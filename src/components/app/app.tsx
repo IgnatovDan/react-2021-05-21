@@ -17,14 +17,6 @@ const App = ({restaurants}: any): JSX.Element => {
         <Header />
         <Backet
           items={basketItems}
-          onAddItem={product => {
-            const newBusketItems = [product,...basketItems];
-            setBasketItems(newBusketItems);            
-          }}
-          onRemoveItem={(product) => {
-            const newBusketItems = basketItems.filter(f => f.title !== product.title);
-            setBasketItems(newBusketItems);
-          }}          
           onRemoveWholeBasketItem={(product) => {
             const newBusketItems = basketItems.filter(f => f.title !== product.title);
             setBasketItems(newBusketItems);
