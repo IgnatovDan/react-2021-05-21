@@ -22,7 +22,7 @@ const App = ({restaurants}: any): JSX.Element => {
             setBasketItems(newBusketItems);
           }} />
         <Restaurants restaurants={restaurants} onnAddMenuItem={(product) => {
-          const newBusketItems = [{ title: product.name as string, quantity: 1, item_cost: product.price as number },...basketItems];
+          const newBusketItems = [{ title: product.name as string, item_cost: product.price as number },...basketItems];
           setBasketItems(newBusketItems);
         }} />  
   </>;
