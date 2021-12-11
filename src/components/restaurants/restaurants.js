@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Restaurant from '../restaurant';
 import Navigation from '../navigation';
 
-const Restaurants = ({ restaurants }) => {
+const Restaurants = ({ restaurants, onnAddMenuItem }) => {
   const [activeId, setActiveId] = useState(restaurants[0].id);
 
   const activeRestaurant = useMemo(
@@ -14,7 +14,7 @@ const Restaurants = ({ restaurants }) => {
   return (
     <div>
       <Navigation restaurants={restaurants} onRestaurantClick={setActiveId} />
-      <Restaurant restaurant={activeRestaurant} />
+      <Restaurant restaurant={activeRestaurant} onnAddMenuItem={onnAddMenuItem} />
     </div>
   );
 };

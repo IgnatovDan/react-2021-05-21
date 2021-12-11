@@ -6,7 +6,7 @@ import Banner from '../banner';
 import Rate from '../rate';
 import styles from './restaurant.module.css';
 
-const Restaurant = ({ restaurant }) => {
+const Restaurant = ({ restaurant, onnAddMenuItem }) => {
   const { name, menu, reviews } = restaurant;
 
   const averageRating = useMemo(() => {
@@ -20,7 +20,7 @@ const Restaurant = ({ restaurant }) => {
         <Rate value={averageRating} />
       </Banner>
       <div className={styles.restaurant}>
-        <Menu menu={menu} key={restaurant.id} />
+        <Menu menu={menu} key={restaurant.id} onnAddMenuItem={onnAddMenuItem} />
         <Reviews reviews={reviews} />
       </div>
     </div>
